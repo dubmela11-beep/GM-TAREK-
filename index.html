@@ -1,0 +1,7686 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b0715">
+<meta name="description" content="CampusSphere — Premium Personal Campus Universe">
+<title>CampusSphere — GM Tarek</title>
+
+<style>
+/* =========================================================
+   CAMPUSSPHERE
+   PREMIUM LIQUID GLASS UI
+   UPDATED PERSONAL BRANDING EDITION
+   Developer by GM Tarek
+   ========================================================= */
+
+:root{
+  --bg:#08060f;
+  --bg2:#120c20;
+
+  --glass:rgba(255,255,255,.075);
+  --glass2:rgba(255,255,255,.105);
+  --glass3:rgba(255,255,255,.14);
+
+  --border:rgba(255,255,255,.13);
+  --border2:rgba(255,255,255,.22);
+
+  --text:#faf7ff;
+  --muted:#aaa1ba;
+
+  --purple:#9a6bff;
+  --purple2:#7144ff;
+  --pink:#ff5dbb;
+  --cyan:#65dcff;
+
+  --green:#4fe0a0;
+  --red:#ff687f;
+  --yellow:#ffd76a;
+
+  --shadow:
+    0 25px 70px rgba(0,0,0,.45);
+
+  --radius:26px;
+  --radius2:19px;
+
+  --ease:.25s cubic-bezier(.2,.8,.2,1);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  color:var(--text);
+
+  font-family:
+    Inter,
+    "Noto Sans Bengali",
+    "Noto Sans",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 10% 5%,
+      rgba(145,80,255,.22),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 95% 15%,
+      rgba(255,70,180,.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(67,120,255,.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      #07050c,
+      #100a1d 50%,
+      #07060d
+    );
+
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  border:0;
+  color:inherit;
+  cursor:pointer;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  outline:none;
+
+  color:var(--text);
+
+  background:rgba(0,0,0,.18);
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  border-radius:15px;
+
+  padding:13px 15px;
+
+  transition:var(--ease);
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:rgba(165,112,255,.7);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(139,80,255,.11);
+}
+
+textarea{
+  min-height:105px;
+  resize:vertical;
+}
+
+select option{
+  background:#171027;
+}
+
+::-webkit-scrollbar{
+  width:7px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,.16);
+  border-radius:99px;
+}
+
+/* =========================================================
+   BACKGROUND LIQUID ORBS
+   ========================================================= */
+
+.liquid-orb{
+  position:fixed;
+  pointer-events:none;
+  border-radius:50%;
+  z-index:-2;
+}
+
+.orb-a{
+  width:330px;
+  height:330px;
+  left:-130px;
+  top:100px;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      rgba(164,100,255,.28),
+      transparent 68%
+    );
+
+  filter:blur(3px);
+}
+
+.orb-b{
+  width:380px;
+  height:380px;
+  right:-160px;
+  top:330px;
+
+  background:
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(255,78,181,.21),
+      transparent 68%
+    );
+
+  filter:blur(5px);
+}
+
+.orb-c{
+  width:300px;
+  height:300px;
+  left:35%;
+  bottom:-180px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(82,134,255,.15),
+      transparent 70%
+    );
+}
+
+/* =========================================================
+   GLASS
+   ========================================================= */
+
+.glass{
+  position:relative;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.105),
+      rgba(255,255,255,.035)
+    );
+
+  border:
+    1px solid
+    var(--border);
+
+  box-shadow:var(--shadow);
+
+  backdrop-filter:
+    blur(24px)
+    saturate(145%);
+
+  -webkit-backdrop-filter:
+    blur(24px)
+    saturate(145%);
+
+  overflow:hidden;
+}
+
+.glass::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at 20% 0%,
+      rgba(255,255,255,.16),
+      transparent 27%
+    ),
+    linear-gradient(
+      120deg,
+      rgba(255,255,255,.05),
+      transparent 35%
+    );
+
+  opacity:.65;
+}
+
+.glass>*{
+  position:relative;
+  z-index:1;
+}
+
+/* =========================================================
+   APP
+   ========================================================= */
+
+#app{
+  min-height:100vh;
+}
+
+.app-shell{
+  width:min(1450px,100%);
+  margin:auto;
+
+  padding:
+    16px
+    16px
+    125px;
+}
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:15px;
+
+  padding:13px 16px;
+
+  border-radius:26px;
+
+  margin-bottom:20px;
+}
+
+/* PERSONAL BRAND */
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+/*
+  এখানে C logo বাদ দিয়ে GM Tarek
+  personal mini brand তৈরি করা হয়েছে।
+*/
+
+.personal-logo{
+  width:58px;
+  height:47px;
+
+  flex:0 0 58px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  position:relative;
+
+  border-radius:17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(151,94,255,.85),
+      rgba(255,77,183,.72)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.24);
+
+  box-shadow:
+    inset 0 2px 5px rgba(255,255,255,.35),
+    inset 0 -5px 15px rgba(63,17,108,.25),
+    0 10px 30px rgba(122,58,255,.28);
+
+  overflow:hidden;
+}
+
+.personal-logo::before{
+  content:"";
+
+  position:absolute;
+
+  width:38px;
+  height:14px;
+
+  top:-4px;
+  left:8px;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.28);
+
+  filter:blur(4px);
+
+  transform:rotate(-15deg);
+}
+
+.personal-logo span{
+  position:relative;
+
+  font-size:15px;
+  font-weight:950;
+
+  letter-spacing:-.8px;
+
+  text-shadow:
+    0 2px 10px rgba(0,0,0,.3);
+}
+
+.brand-title{
+  font-size:19px;
+  font-weight:950;
+  letter-spacing:-.6px;
+}
+
+.brand-sub{
+  color:var(--muted);
+  font-size:10px;
+  margin-top:2px;
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* =========================================================
+   PREMIUM BUTTONS
+   ========================================================= */
+
+.icon-btn,
+.premium-btn{
+  min-height:43px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+
+  padding:10px 14px;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.13),
+      rgba(255,255,255,.045)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.14);
+
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.17),
+    0 8px 25px rgba(0,0,0,.2);
+
+  transition:var(--ease);
+}
+
+.icon-btn{
+  width:43px;
+  padding:0;
+}
+
+.icon-btn:hover,
+.premium-btn:hover{
+  transform:translateY(-2px);
+
+  border-color:
+    rgba(186,137,255,.55);
+
+  box-shadow:
+    inset 0 1px 3px rgba(255,255,255,.2),
+    0 12px 34px rgba(117,59,255,.23);
+}
+
+.premium-btn.primary{
+  background:
+    linear-gradient(
+      135deg,
+      #7e4fff,
+      #c14cff 55%,
+      #ff5bad
+    );
+
+  border-color:
+    rgba(255,255,255,.22);
+
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.32),
+    0 10px 32px rgba(133,65,255,.3);
+}
+
+.premium-btn.success{
+  background:
+    linear-gradient(
+      135deg,
+      #229e73,
+      #49dca2
+    );
+}
+
+.premium-btn.danger{
+  background:
+    linear-gradient(
+      135deg,
+      #b83b60,
+      #ff647f
+    );
+}
+
+.premium-btn.small{
+  min-height:36px;
+  padding:7px 11px;
+  border-radius:12px;
+  font-size:12px;
+}
+
+/* =========================================================
+   VIEWS
+   ========================================================= */
+
+.view{
+  display:none;
+  animation:viewIn .35s ease;
+}
+
+.view.active{
+  display:block;
+}
+
+@keyframes viewIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* =========================================================
+   GREETING
+   ========================================================= */
+
+.greeting{
+  padding:27px;
+
+  border-radius:30px;
+
+  margin-bottom:20px;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(255,80,184,.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 20% 100%,
+      rgba(122,78,255,.18),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.09),
+      rgba(255,255,255,.035)
+    );
+}
+
+.greeting .arabic{
+  direction:rtl;
+
+  font-size:
+    clamp(24px,5vw,38px);
+
+  font-weight:850;
+
+  margin-bottom:10px;
+}
+
+.greeting h1{
+  font-size:
+    clamp(25px,5vw,40px);
+
+  line-height:1.1;
+
+  letter-spacing:-1.3px;
+}
+
+.greeting p{
+  color:var(--muted);
+
+  margin-top:10px;
+
+  max-width:760px;
+
+  line-height:1.75;
+}
+
+.date-chip{
+  display:inline-flex;
+
+  margin-top:17px;
+
+  padding:8px 12px;
+
+  border-radius:99px;
+
+  background:
+    rgba(255,255,255,.07);
+
+  border:
+    1px solid
+    var(--border);
+
+  color:#d9d1e7;
+
+  font-size:11px;
+}
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.grid{
+  display:grid;
+  gap:18px;
+}
+
+.grid-2{
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+}
+
+.grid-4{
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+}
+
+.card{
+  border-radius:var(--radius);
+  padding:20px;
+}
+
+.card-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:12px;
+
+  margin-bottom:16px;
+}
+
+.card-title h2,
+.card-title h3{
+  font-size:16px;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.small{
+  font-size:12px;
+}
+
+.section-heading{
+  margin:25px 0 13px;
+
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+}
+
+.section-heading h2{
+  font-size:19px;
+}
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.stat-card{
+  padding:19px;
+  border-radius:23px;
+}
+
+.stat-icon{
+  width:40px;
+  height:40px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:14px;
+
+  background:
+    rgba(255,255,255,.09);
+
+  margin-bottom:15px;
+}
+
+.stat-value{
+  font-size:25px;
+
+  font-weight:950;
+
+  letter-spacing:-1px;
+}
+
+.stat-label{
+  color:var(--muted);
+
+  font-size:11px;
+
+  margin-top:4px;
+}
+
+/* =========================================================
+   POMODORO
+   ========================================================= */
+
+.pomo-wrap{
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:28px;
+
+  flex-wrap:wrap;
+}
+
+.pomo-circle{
+  width:210px;
+  height:210px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  position:relative;
+
+  background:
+    conic-gradient(
+      #a46cff 0deg,
+      rgba(255,94,188,.8) 0deg,
+      rgba(255,255,255,.08) 0deg
+    );
+
+  box-shadow:
+    inset 0 0 25px rgba(255,255,255,.07),
+    0 20px 55px rgba(116,57,255,.22);
+}
+
+.pomo-circle::after{
+  content:"";
+
+  position:absolute;
+
+  width:174px;
+  height:174px;
+
+  border-radius:50%;
+
+  background:#100b1d;
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+
+  box-shadow:
+    inset 0 0 25px rgba(0,0,0,.5);
+}
+
+.pomo-inner{
+  position:relative;
+  z-index:2;
+
+  text-align:center;
+}
+
+.pomo-time{
+  font-size:36px;
+
+  font-weight:950;
+
+  letter-spacing:-2px;
+}
+
+.pomo-label{
+  color:var(--muted);
+  font-size:10px;
+}
+
+.pomo-controls{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  justify-content:center;
+
+  gap:8px;
+
+  margin-top:15px;
+}
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.progress{
+  width:100%;
+  height:9px;
+
+  overflow:hidden;
+
+  border-radius:99px;
+
+  background:
+    rgba(255,255,255,.07);
+}
+
+.progress span{
+  display:block;
+
+  height:100%;
+
+  border-radius:inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8156ff,
+      #ff5db9
+    );
+
+  transition:
+    width .4s ease;
+}
+
+/* =========================================================
+   QUICK ACTIONS
+   ========================================================= */
+
+.quick-actions{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:10px;
+}
+
+.quick{
+  padding:15px 10px;
+
+  border-radius:18px;
+
+  text-align:center;
+
+  background:
+    rgba(255,255,255,.055);
+
+  border:
+    1px solid
+    var(--border);
+
+  transition:var(--ease);
+}
+
+.quick:hover{
+  transform:translateY(-3px);
+
+  background:
+    rgba(255,255,255,.09);
+}
+
+.quick-icon{
+  font-size:21px;
+  margin-bottom:7px;
+}
+
+.quick span{
+  display:block;
+
+  font-size:11px;
+
+  color:#d5cfe0;
+}
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+.form-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:12px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  color:#d6d0df;
+  font-size:12px;
+}
+
+.form-actions{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:8px;
+
+  margin-top:14px;
+}
+
+/* =========================================================
+   LIST
+   ========================================================= */
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.list-item{
+  padding:14px;
+
+  border-radius:17px;
+
+  background:
+    rgba(255,255,255,.045);
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:12px;
+}
+
+.list-item-main{
+  min-width:0;
+}
+
+.list-item-title{
+  font-weight:750;
+  font-size:13px;
+}
+
+.list-item-meta{
+  font-size:10px;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+.badge{
+  display:inline-flex;
+
+  align-items:center;
+
+  padding:5px 8px;
+
+  border-radius:99px;
+
+  font-size:10px;
+
+  background:
+    rgba(255,255,255,.08);
+
+  color:#dcd4e9;
+}
+
+/* =========================================================
+   TIMELINE
+   ========================================================= */
+
+.timeline{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+
+  gap:8px;
+}
+
+.hour{
+  min-height:105px;
+
+  border-radius:16px;
+
+  padding:10px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  border:
+    1px solid
+    rgba(255,255,255,.07);
+}
+
+.active-hour{
+  border-color:
+    rgba(158,104,255,.45);
+
+  box-shadow:
+    0 0 20px
+    rgba(127,69,255,.12);
+}
+
+.hour-time{
+  color:#b9afca;
+  font-size:11px;
+  margin-bottom:8px;
+}
+
+.hour-task{
+  font-size:12px;
+  line-height:1.4;
+}
+
+.hour-empty{
+  color:#675f71;
+  font-size:11px;
+}
+
+/* =========================================================
+   SOCIAL
+   ========================================================= */
+
+.post{
+  padding:18px;
+  border-radius:23px;
+}
+
+.post-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.avatar{
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8354ff,
+      #f55ab6
+    );
+
+  font-weight:900;
+}
+
+.post-author{
+  font-size:13px;
+  font-weight:800;
+}
+
+.post-time{
+  font-size:10px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.post-content{
+  margin:14px 0;
+
+  line-height:1.65;
+
+  font-size:14px;
+
+  white-space:pre-wrap;
+}
+
+.post-actions{
+  display:flex;
+  gap:8px;
+}
+
+.post-action{
+  padding:8px 12px;
+
+  border-radius:12px;
+
+  background:
+    rgba(255,255,255,.055);
+
+  font-size:11px;
+}
+
+/* =========================================================
+   CHAT
+   ========================================================= */
+
+.chat-layout{
+  display:grid;
+
+  grid-template-columns:
+    260px 1fr;
+
+  min-height:530px;
+
+  overflow:hidden;
+}
+
+.chat-users{
+  border-right:
+    1px solid
+    var(--border);
+
+  padding:12px;
+}
+
+.chat-user{
+  display:flex;
+
+  gap:10px;
+
+  align-items:center;
+
+  padding:11px;
+
+  border-radius:14px;
+
+  cursor:pointer;
+}
+
+.chat-user:hover,
+.chat-user.active{
+  background:
+    rgba(255,255,255,.07);
+}
+
+.chat-main{
+  display:flex;
+  flex-direction:column;
+}
+
+.chat-head{
+  padding:16px;
+
+  border-bottom:
+    1px solid
+    var(--border);
+}
+
+.messages{
+  flex:1;
+
+  padding:18px;
+
+  overflow-y:auto;
+
+  min-height:300px;
+
+  max-height:420px;
+}
+
+.bubble-row{
+  display:flex;
+  margin-bottom:9px;
+}
+
+.bubble-row.me{
+  justify-content:flex-end;
+}
+
+.bubble{
+  max-width:75%;
+
+  padding:10px 13px;
+
+  border-radius:17px;
+
+  background:
+    rgba(255,255,255,.07);
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+.me .bubble{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(126,77,255,.85),
+      rgba(218,74,184,.75)
+    );
+}
+
+.chat-input{
+  display:flex;
+  gap:8px;
+
+  padding:12px;
+
+  border-top:
+    1px solid
+    var(--border);
+}
+
+/* =========================================================
+   FINANCE
+   ========================================================= */
+
+.balance{
+  text-align:center;
+
+  padding:25px;
+
+  border-radius:23px;
+}
+
+.balance-value{
+  font-size:39px;
+
+  font-weight:950;
+
+  letter-spacing:-2px;
+
+  margin:10px 0;
+}
+
+.income{
+  color:var(--green);
+}
+
+.expense{
+  color:var(--red);
+}
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.profile-cover{
+  min-height:180px;
+
+  border-radius:25px;
+
+  padding:20px;
+
+  display:flex;
+
+  align-items:end;
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(184,126,255,.3),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(255,78,181,.24),
+      transparent 35%
+    ),
+    rgba(255,255,255,.055);
+}
+
+.profile-main{
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+}
+
+.profile-avatar{
+  width:88px;
+  height:88px;
+
+  border-radius:28px;
+
+  object-fit:cover;
+
+  border:
+    2px solid
+    rgba(255,255,255,.22);
+
+  background:
+    linear-gradient(
+      135deg,
+      #8a55ff,
+      #ff5db6
+    );
+}
+
+/* =========================================================
+   NEW PREMIUM BOTTOM NAV
+   Dashboard / Home / Study / Finance
+   ========================================================= */
+
+.bottom-nav{
+  position:fixed;
+
+  z-index:70;
+
+  left:50%;
+  bottom:16px;
+
+  transform:translateX(-50%);
+
+  width:min(590px,calc(100% - 26px));
+
+  padding:8px;
+
+  border-radius:28px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:6px;
+
+  /*
+    Premium liquid floating effect
+  */
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(32,22,53,.86),
+      rgba(12,9,22,.82)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.16);
+
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.48),
+    inset 0 1px 2px rgba(255,255,255,.16),
+    0 0 45px rgba(125,65,255,.10);
+
+  backdrop-filter:
+    blur(28px)
+    saturate(160%);
+
+  -webkit-backdrop-filter:
+    blur(28px)
+    saturate(160%);
+}
+
+.nav-btn{
+  min-height:59px;
+
+  border-radius:20px;
+
+  background:transparent;
+
+  color:#aaa1b9;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:4px;
+
+  transition:var(--ease);
+
+  position:relative;
+}
+
+.nav-btn span:first-child{
+  font-size:20px;
+}
+
+.nav-btn span:last-child{
+  font-size:10px;
+}
+
+.nav-btn:hover{
+  color:#fff;
+
+  background:
+    rgba(255,255,255,.055);
+}
+
+.nav-btn.active{
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(131,79,255,.6),
+      rgba(239,80,186,.44)
+    );
+
+  box-shadow:
+    inset 0 1px 3px rgba(255,255,255,.2),
+    0 7px 25px rgba(106,53,255,.2);
+}
+
+.nav-btn.active::after{
+  content:"";
+
+  position:absolute;
+
+  bottom:5px;
+
+  width:20px;
+  height:3px;
+
+  border-radius:99px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a86bff,
+      #ff63b9
+    );
+
+  box-shadow:
+    0 0 12px
+    rgba(207,101,255,.75);
+}
+
+/* =========================================================
+   AESTHETIC FLOATING CORNER MENU
+   ========================================================= */
+
+.corner-menu{
+  position:fixed;
+
+  z-index:75;
+
+  right:18px;
+  bottom:104px;
+
+  width:58px;
+  height:58px;
+
+  border-radius:21px;
+
+  display:grid;
+  place-items:center;
+
+  /*
+    Liquid glass surface
+  */
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(150,101,255,.58),
+      rgba(255,80,184,.38)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.25);
+
+  box-shadow:
+    inset 0 2px 5px rgba(255,255,255,.25),
+    inset 0 -5px 15px rgba(39,12,70,.25),
+    0 16px 40px rgba(0,0,0,.38),
+    0 0 30px rgba(139,70,255,.25);
+
+  backdrop-filter:
+    blur(22px)
+    saturate(160%);
+
+  -webkit-backdrop-filter:
+    blur(22px)
+    saturate(160%);
+
+  transition:
+    .3s cubic-bezier(.2,.8,.2,1);
+}
+
+.corner-menu::before{
+  content:"";
+
+  position:absolute;
+
+  width:34px;
+  height:12px;
+
+  top:4px;
+  left:9px;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.32);
+
+  filter:blur(5px);
+
+  transform:rotate(-12deg);
+
+  pointer-events:none;
+}
+
+.corner-menu:hover{
+  transform:
+    translateY(-4px)
+    rotate(2deg);
+
+  box-shadow:
+    inset 0 2px 5px rgba(255,255,255,.3),
+    0 20px 50px rgba(0,0,0,.45),
+    0 0 40px rgba(154,83,255,.36);
+}
+
+.corner-menu:active{
+  transform:scale(.94);
+}
+
+.corner-menu-icon{
+  position:relative;
+
+  width:23px;
+  height:19px;
+}
+
+.corner-menu-icon span{
+  position:absolute;
+
+  left:0;
+
+  width:23px;
+  height:2px;
+
+  border-radius:99px;
+
+  background:white;
+
+  box-shadow:
+    0 0 8px rgba(255,255,255,.45);
+
+  transition:var(--ease);
+}
+
+.corner-menu-icon span:nth-child(1){
+  top:1px;
+}
+
+.corner-menu-icon span:nth-child(2){
+  top:8px;
+}
+
+.corner-menu-icon span:nth-child(3){
+  top:15px;
+}
+
+/* =========================================================
+   DRAWER
+   ========================================================= */
+
+.overlay{
+  position:fixed;
+
+  inset:0;
+
+  background:
+    rgba(0,0,0,.58);
+
+  backdrop-filter:blur(5px);
+
+  z-index:80;
+
+  display:none;
+}
+
+.overlay.show{
+  display:block;
+}
+
+.drawer{
+  position:fixed;
+
+  z-index:90;
+
+  top:0;
+  right:0;
+
+  width:min(390px,92vw);
+  height:100vh;
+
+  padding:20px;
+
+  overflow-y:auto;
+
+  transform:translateX(110%);
+
+  transition:
+    .35s
+    cubic-bezier(.2,.8,.2,1);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(29,20,50,.97),
+      rgba(14,10,25,.98)
+    );
+
+  border-left:
+    1px solid
+    var(--border);
+
+  box-shadow:
+    -25px 0 80px rgba(0,0,0,.45);
+}
+
+.drawer.show{
+  transform:none;
+}
+
+.drawer-head{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  margin-bottom:18px;
+}
+
+.drawer-title{
+  font-size:21px;
+  font-weight:950;
+}
+
+.drawer-section{
+  margin-top:16px;
+}
+
+.drawer-section-title{
+  color:#82798f;
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:1.5px;
+
+  margin-bottom:7px;
+}
+
+.drawer-item{
+  width:100%;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  text-align:left;
+
+  padding:13px;
+
+  margin-bottom:5px;
+
+  border-radius:15px;
+
+  background:transparent;
+
+  color:#ddd6e6;
+
+  transition:var(--ease);
+}
+
+.drawer-item:hover{
+  background:
+    rgba(255,255,255,.07);
+
+  transform:translateX(-2px);
+}
+
+.drawer-item .di{
+  width:34px;
+  height:34px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:12px;
+
+  background:
+    rgba(255,255,255,.07);
+}
+
+.developer{
+  text-align:center;
+
+  padding:28px 10px;
+
+  color:#968da3;
+
+  font-size:12px;
+}
+
+.developer strong{
+  color:#e5dcef;
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal-wrap{
+  position:fixed;
+
+  inset:0;
+
+  z-index:120;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:18px;
+
+  background:
+    rgba(0,0,0,.68);
+
+  backdrop-filter:blur(8px);
+}
+
+.modal-wrap.show{
+  display:flex;
+}
+
+.modal{
+  width:min(680px,100%);
+
+  max-height:90vh;
+
+  overflow-y:auto;
+
+  border-radius:27px;
+
+  padding:21px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(34,24,56,.98),
+      rgba(15,11,27,.98)
+    );
+
+  border:
+    1px solid
+    var(--border2);
+
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.55);
+}
+
+.modal-head{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:18px;
+}
+
+.modal-head h2{
+  font-size:19px;
+}
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.empty{
+  text-align:center;
+
+  padding:35px 15px;
+
+  color:#81788e;
+}
+
+.empty-icon{
+  font-size:35px;
+
+  margin-bottom:8px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:1000px){
+
+  .grid-4{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .timeline{
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+  }
+
+}
+
+@media(max-width:750px){
+
+  .app-shell{
+    padding:
+      10px
+      10px
+      120px;
+  }
+
+  .topbar{
+    border-radius:21px;
+  }
+
+  .brand-sub{
+    display:none;
+  }
+
+  .grid-2{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .timeline{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .chat-layout{
+    grid-template-columns:1fr;
+  }
+
+  .chat-users{
+    display:flex;
+
+    overflow-x:auto;
+
+    border-right:0;
+
+    border-bottom:
+      1px solid
+      var(--border);
+  }
+
+  .chat-user{
+    min-width:150px;
+  }
+
+  .greeting{
+    padding:22px;
+  }
+
+  .pomo-circle{
+    width:190px;
+    height:190px;
+  }
+
+  .pomo-circle::after{
+    width:158px;
+    height:158px;
+  }
+
+  .corner-menu{
+    right:13px;
+    bottom:100px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .personal-logo{
+    width:53px;
+    height:44px;
+
+    flex-basis:53px;
+  }
+
+  .personal-logo span{
+    font-size:13px;
+  }
+
+  .brand-title{
+    font-size:16px;
+  }
+
+  .quick-actions{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .timeline{
+    grid-template-columns:1fr;
+  }
+
+  .stat-value{
+    font-size:22px;
+  }
+
+  .top-actions .lang-text{
+    display:none;
+  }
+
+  .bottom-nav{
+    width:
+      calc(100% - 18px);
+
+    bottom:9px;
+
+    border-radius:24px;
+  }
+
+  .nav-btn{
+    min-height:56px;
+  }
+
+  .nav-btn span:first-child{
+    font-size:18px;
+  }
+
+  .nav-btn span:last-child{
+    font-size:9px;
+  }
+
+  .corner-menu{
+    width:54px;
+    height:54px;
+
+    right:11px;
+    bottom:91px;
+
+    border-radius:19px;
+  }
+
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto!important;
+    transition:none!important;
+    animation:none!important;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- LIQUID BACKGROUND -->
+<div class="liquid-orb orb-a"></div>
+<div class="liquid-orb orb-b"></div>
+<div class="liquid-orb orb-c"></div>
+
+<div id="app">
+
+  <div class="app-shell">
+
+    <!-- ===================================================
+         TOP BAR
+         =================================================== -->
+
+    <header class="topbar glass">
+
+      <div class="brand">
+
+        <!-- GM TAREK PERSONAL BRAND -->
+        <div class="personal-logo" title="GM Tarek">
+          <span>GM<br>T.</span>
+        </div>
+
+        <div>
+          <div class="brand-title">
+            CampusSphere
+          </div>
+
+          <div class="brand-sub" data-i18n="brandSub">
+            Your Personal Campus Universe
+          </div>
+        </div>
+
+      </div>
+
+      <div class="top-actions">
+
+        <!-- LANGUAGE -->
+        <button
+          class="premium-btn"
+          id="languageBtn"
+          onclick="toggleLanguage()">
+
+          🌐
+          <span class="lang-text">
+            English
+          </span>
+
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- ===================================================
+         HOME
+         =================================================== -->
+
+    <main
+      id="homeView"
+      class="view active">
+
+      <section class="greeting glass">
+
+        <div class="arabic">
+          السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ
+        </div>
+
+        <h1 id="greetingTitle">
+          আসসালামু আলাইকুম!
+        </h1>
+
+        <p id="greetingText">
+          আল্লাহ তোমার জ্ঞান, সময় ও পরিশ্রমে বরকত দিন।
+          আজকের ছোট ছোট প্রচেষ্টাগুলোই ইনশাআল্লাহ
+          আগামী দিনের বড় সাফল্য তৈরি করবে।
+        </p>
+
+        <div
+          class="date-chip"
+          id="todayDate">
+        </div>
+
+      </section>
+
+
+      <!-- STATS -->
+
+      <div
+        class="grid grid-4"
+        id="homeStats">
+      </div>
+
+
+      <!-- POMODORO -->
+
+      <div class="section-heading">
+
+        <h2 data-i18n="focusTimer">
+          Focus Timer
+        </h2>
+
+        <button
+          class="premium-btn small"
+          onclick="openFeature('pomodoro')">
+
+          ⚡
+          <span data-i18n="open">
+            Open
+          </span>
+
+        </button>
+
+      </div>
+
+
+      <section class="card glass">
+
+        <div class="pomo-wrap">
+
+          <div>
+
+            <div
+              class="pomo-circle"
+              id="pomoCircle">
+
+              <div class="pomo-inner">
+
+                <div
+                  class="pomo-time"
+                  id="pomoTime">
+                  25:00
+                </div>
+
+                <div class="pomo-label">
+                  FOCUS SESSION
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="pomo-controls">
+
+              <button
+                class="premium-btn primary small"
+                onclick="startPomodoro()">
+                ▶ Start
+              </button>
+
+              <button
+                class="premium-btn small"
+                onclick="pausePomodoro()">
+                ⏸ Pause
+              </button>
+
+              <button
+                class="premium-btn small"
+                onclick="resetPomodoro()">
+                ↺ Reset
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div
+            style="
+              min-width:220px;
+              flex:1;
+              max-width:390px;
+            ">
+
+            <h3 style="margin-bottom:7px;">
+              Today's Focus
+            </h3>
+
+            <p
+              class="muted small"
+              style="line-height:1.6;">
+
+              Stay focused, avoid distractions
+              and complete one meaningful
+              study session at a time.
+
+            </p>
+
+
+            <div style="margin-top:20px;">
+
+              <div
+                style="
+                  display:flex;
+                  justify-content:space-between;
+                  font-size:11px;
+                  margin-bottom:7px;
+                ">
+
+                <span>
+                  Sessions
+                </span>
+
+                <strong id="sessionCount">
+                  0
+                </strong>
+
+              </div>
+
+              <div class="progress">
+
+                <span
+                  id="focusProgress"
+                  style="width:0%">
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div
+              style="
+                margin-top:15px;
+                display:flex;
+                gap:10px;
+                flex-wrap:wrap;
+              ">
+
+              <div class="badge">
+                ⏱ Focus:
+                <span id="focusMinutes">
+                  0
+                </span>
+                min
+              </div>
+
+              <div class="badge">
+                🎯 Goal: 4
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- QUICK ACCESS -->
+
+      <div class="section-heading">
+
+        <h2 data-i18n="quickAccess">
+          Quick Access
+        </h2>
+
+      </div>
+
+
+      <section class="card glass">
+
+        <div class="quick-actions">
+
+          <button
+            class="quick"
+            onclick="openFeature('timeline')">
+
+            <div class="quick-icon">
+              🕐
+            </div>
+
+            <span data-i18n="timeline">
+              Timeline
+            </span>
+
+          </button>
+
+
+          <button
+            class="quick"
+            onclick="openFeature('routine')">
+
+            <div class="quick-icon">
+              📅
+            </div>
+
+            <span data-i18n="routine">
+              Routine
+            </span>
+
+          </button>
+
+
+          <button
+            class="quick"
+            onclick="openFeature('notes')">
+
+            <div class="quick-icon">
+              📚
+            </div>
+
+            <span data-i18n="studyNotes">
+              Study Notes
+            </span>
+
+          </button>
+
+
+          <button
+            class="quick"
+            onclick="switchView('finance')">
+
+            <div class="quick-icon">
+              ৳
+            </div>
+
+            <span data-i18n="finance">
+              Finance
+            </span>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- TODAY -->
+
+      <div class="section-heading">
+
+        <h2 data-i18n="todayOverview">
+          Today's Overview
+        </h2>
+
+      </div>
+
+
+      <div class="grid grid-2">
+
+        <section class="card glass">
+
+          <div class="card-title">
+
+            <h3>
+              📝
+              <span data-i18n="upcomingTasks">
+                Upcoming Tasks
+              </span>
+            </h3>
+
+            <button
+              class="premium-btn small"
+              onclick="openFeature('timeline')">
+              +
+            </button>
+
+          </div>
+
+          <div
+            id="homeTasks"
+            class="list">
+          </div>
+
+        </section>
+
+
+        <section class="card glass">
+
+          <div class="card-title">
+
+            <h3>
+              📖
+              <span data-i18n="studyProgress">
+                Study Progress
+              </span>
+            </h3>
+
+            <span
+              class="badge"
+              id="studyProgressText">
+              0%
+            </span>
+
+          </div>
+
+
+          <div class="progress">
+
+            <span
+              id="studyProgressBar"
+              style="width:0%">
+            </span>
+
+          </div>
+
+
+          <p
+            class="muted small"
+            style="margin-top:12px;">
+
+            Track your notes and completed
+            study tasks from one place.
+
+          </p>
+
+        </section>
+
+      </div>
+
+    </main>
+
+
+    <!-- ===================================================
+         DASHBOARD
+         =================================================== -->
+
+    <main
+      id="dashboardView"
+      class="view">
+
+      <section class="greeting glass">
+
+        <h1 data-i18n="dashboard">
+          Dashboard
+        </h1>
+
+        <p>
+          Your complete academic,
+          productivity and personal activity overview.
+        </p>
+
+      </section>
+
+
+      <div
+        class="grid grid-4"
+        id="dashboardStats">
+      </div>
+
+
+      <div
+        class="grid grid-2"
+        style="margin-top:18px;">
+
+        <section class="card glass">
+
+          <div class="card-title">
+
+            <h3>
+              📊 Productivity
+            </h3>
+
+          </div>
+
+
+          <div style="display:grid;gap:14px;">
+
+            <div>
+
+              <div
+                style="
+                  display:flex;
+                  justify-content:space-between;
+                  font-size:11px;
+                  margin-bottom:7px;
+                ">
+
+                <span>
+                  Tasks completed
+                </span>
+
+                <strong id="dashTaskPct">
+                  0%
+                </strong>
+
+              </div>
+
+              <div class="progress">
+
+                <span
+                  id="dashTaskProgress"
+                  style="width:0%">
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <div
+                style="
+                  display:flex;
+                  justify-content:space-between;
+                  font-size:11px;
+                  margin-bottom:7px;
+                ">
+
+                <span>
+                  Study notes
+                </span>
+
+                <strong id="dashNoteCount">
+                  0
+                </strong>
+
+              </div>
+
+              <div class="progress">
+
+                <span
+                  id="dashNoteProgress"
+                  style="width:0%">
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <div
+                style="
+                  display:flex;
+                  justify-content:space-between;
+                  font-size:11px;
+                  margin-bottom:7px;
+                ">
+
+                <span>
+                  Focus sessions
+                </span>
+
+                <strong id="dashSessionCount">
+                  0
+                </strong>
+
+              </div>
+
+              <div class="progress">
+
+                <span
+                  id="dashSessionProgress"
+                  style="width:0%">
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <section class="card glass">
+
+          <div class="card-title">
+
+            <h3>
+              💡 Daily Motivation
+            </h3>
+
+          </div>
+
+          <p
+            id="dailyQuote"
+            style="
+              font-size:17px;
+              line-height:1.7;
+            ">
+          </p>
+
+          <p
+            class="muted small"
+            style="margin-top:12px;">
+
+            CampusSphere •
+            Keep learning, keep growing.
+
+          </p>
+
+        </section>
+
+      </div>
+
+    </main>
+
+
+    <!-- ===================================================
+         STUDY
+         =================================================== -->
+
+    <main
+      id="studyView"
+      class="view">
+
+      <section class="greeting glass">
+
+        <h1 data-i18n="study">
+          Study Space 📚
+        </h1>
+
+        <p>
+          Organize notes, study tasks
+          and focused learning sessions.
+        </p>
+
+      </section>
+
+
+      <div class="grid grid-2">
+
+        <section class="card glass">
+
+          <div class="card-title">
+
+            <h3>
+              ➕ Add Study Note
+            </h3>
+
+          </div>
+
+
+          <form onsubmit="saveNote(event)">
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label>
+                  Title
+                </label>
+
+                <input
+                  id="noteTitle"
+                  required
+                  placeholder="e.g. Electronics Chapter 1">
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Subject
+                </label>
+
+                <input
+                  id="noteSubject"
+                  placeholder="Electronics">
+
+              </div>
+
+
+              <div class="field full">
+
+                <label>
+                  Note
+                </label>
+
+                <textarea
+                  id="noteContent"
+                  required
+                  placeholder="Write your study note...">
+                </textarea>
+
+              </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+              <button
+                class="premium-btn primary"
+                type="submit">
+
+                💾 Save Note
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </section>
+
+
+        <section class="card glass">
+
+          <div class="card-title">
+
+            <h3>
+              📚 Study Notes
+            </h3>
+
+            <span
+              class="badge"
+              id="noteCounter">
+              0
+            </span>
+
+          </div>
+
+          <div
+            id="studyNotes"
+            class="list">
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+
+    <!-- ===================================================
+         FINANCE
+         =================================================== -->
+
+    <main
+      id="financeView"
+      class="view">
+
+      <section class="greeting glass">
+
+        <h1>
+          Finance 💰
+        </h1>
+
+        <p>
+          আয়, খরচ এবং বর্তমান ব্যালেন্স
+          এক জায়গা থেকে ম্যানেজ করুন।
+        </p>
+
+      </section>
+
+
+      <div
+        class="grid grid-4"
+        id="financeStats">
+      </div>
+
+
+      <div
+        class="grid grid-2"
+        style="margin-top:18px;">
+
+        <section class="card glass">
+
+          <div class="card-title">
+
+            <h3>
+              ➕ Add Transaction
+            </h3>
+
+          </div>
+
+
+          <form onsubmit="saveFinance(event)">
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label>
+                  Type
+                </label>
+
+                <select id="financeType">
+
+                  <option value="income">
+                    Income / আয়
+                  </option>
+
+                  <option value="expense">
+                    Expense / খরচ
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Amount
+                </label>
+
+                <input
+                  id="financeAmount"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  required
+                  placeholder="0">
+
+              </div>
+
+
+              <div class="field full">
+
+                <label>
+                  Category
+                </label>
+
+                <select id="financeCategory">
+
+                  <option>
+                    Food / খাবার
+                  </option>
+
+                  <option>
+                    Mess
+                  </option>
+
+                  <option>
+                    House Rent
+                  </option>
+
+                  <option>
+                    Education
+                  </option>
+
+                  <option>
+                    Transport
+                  </option>
+
+                  <option>
+                    Mobile / Internet
+                  </option>
+
+                  <option>
+                    Salary / Income
+                  </option>
+
+                  <option>
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="field full">
+
+                <label>
+                  Description
+                </label>
+
+                <input
+                  id="financeDescription"
+                  placeholder="Optional description">
+
+              </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+              <button
+                class="premium-btn primary">
+
+                + Add Transaction
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </section>
+
+
+        <section class="card glass">
+
+          <div class="card-title">
+
+            <h3>
+              📋 Transactions
+            </h3>
+
+          </div>
+
+          <div
+            id="financeTransactions"
+            class="list">
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       PREMIUM BOTTOM NAVIGATION
+       ===================================================== -->
+
+  <nav class="bottom-nav">
+
+    <button
+      class="nav-btn"
+      data-view="dashboard"
+      onclick="switchView('dashboard')">
+
+      <span>
+        📊
+      </span>
+
+      <span data-i18n="dashboard">
+        Dashboard
+      </span>
+
+    </button>
+
+
+    <button
+      class="nav-btn active"
+      data-view="home"
+      onclick="switchView('home')">
+
+      <span>
+        🏠
+      </span>
+
+      <span data-i18n="home">
+        Home
+      </span>
+
+    </button>
+
+
+    <button
+      class="nav-btn"
+      data-view="study"
+      onclick="switchView('study')">
+
+      <span>
+        📚
+      </span>
+
+      <span data-i18n="study">
+        Study
+      </span>
+
+    </button>
+
+
+    <button
+      class="nav-btn"
+      data-view="finance"
+      onclick="switchView('finance')">
+
+      <span>
+        💰
+      </span>
+
+      <span data-i18n="finance">
+        Finance
+      </span>
+
+    </button>
+
+  </nav>
+
+
+  <!-- =====================================================
+       PREMIUM CORNER MENU
+       ===================================================== -->
+
+  <button
+    class="corner-menu"
+    onclick="openDrawer()"
+    aria-label="Open menu"
+    title="CampusSphere Menu">
+
+    <div class="corner-menu-icon">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </div>
+
+  </button>
+
+</div>
+
+
+<!-- =======================================================
+     DRAWER OVERLAY
+     ======================================================= -->
+
+<div
+  class="overlay"
+  id="drawerOverlay"
+  onclick="closeDrawer()">
+</div>
+
+
+<!-- =======================================================
+     SIDE DRAWER
+     ======================================================= -->
+
+<aside
+  class="drawer"
+  id="drawer">
+
+  <div class="drawer-head">
+
+    <div>
+
+      <div class="drawer-title">
+        CampusSphere
+      </div>
+
+      <div class="muted small">
+        GM Tarek • Personal Campus
+      </div>
+
+    </div>
+
+
+    <button
+      class="icon-btn"
+      onclick="closeDrawer()">
+      ×
+    </button>
+
+  </div>
+
+
+  <!-- PERSONAL -->
+
+  <div class="drawer-section">
+
+    <div class="drawer-section-title">
+      Personal
+    </div>
+
+
+    <button
+      class="drawer-item"
+      onclick="openFeature('profile')">
+
+      <span class="di">
+        👤
+      </span>
+
+      <span>
+        Profile
+      </span>
+
+    </button>
+
+
+    <button
+      class="drawer-item"
+      onclick="openFeature('friends')">
+
+      <span class="di">
+        👥
+      </span>
+
+      <span>
+        Friends
+      </span>
+
+    </button>
+
+
+    <button
+      class="drawer-item"
+      onclick="openFeature('messages')">
+
+      <span class="di">
+        💬
+      </span>
+
+      <span>
+        Messages
+      </span>
+
+    </button>
+
+  </div>
+
+
+  <!-- PRODUCTIVITY -->
+
+  <div class="drawer-section">
+
+    <div class="drawer-section-title">
+      Productivity
+    </div>
+
+
+    <button
+      class="drawer-item"
+      onclick="openFeature('timeline')">
+
+      <span class="di">
+        🕐
+      </span>
+
+      <span>
+        24-Hour Timeline
+      </span>
+
+    </button>
+
+
+    <button
+      class="drawer-item"
+      onclick="openFeature('routine')">
+
+      <span class="di">
+        📅
+      </span>
+
+      <span>
+        Routine
+      </span>
+
+    </button>
+
+
+    <button
+      class="drawer-item"
+      onclick="openFeature('pomodoro')">
+
+      <span class="di">
+        🍅
+      </span>
+
+      <span>
+        Pomodoro Timer
+      </span>
+
+    </button>
+
+  </div>
+
+
+  <!-- SOCIAL -->
+
+  <div class="drawer-section">
+
+    <div class="drawer-section-title">
+      Social
+    </div>
+
+
+    <button
+      class="drawer-item"
+      onclick="openFeature('social')">
+
+      <span class="di">
+        🌐
+      </span>
+
+      <span>
+        News Feed / Social
+      </span>
+
+    </button>
+
+  </div>
+
+
+  <!-- FINANCE -->
+
+  <div class="drawer-section">
+
+    <div class="drawer-section-title">
+      Finance
+    </div>
+
+
+    <button
+      class="drawer-item"
+      onclick="switchView('finance')">
+
+      <span class="di">
+        💰
+      </span>
+
+      <span>
+        Income & Expense
+      </span>
+
+    </button>
+
+  </div>
+
+
+  <!-- SYSTEM -->
+
+  <div class="drawer-section">
+
+    <div class="drawer-section-title">
+      System
+    </div>
+
+
+    <button
+      class="drawer-item"
+      onclick="exportData()">
+
+      <span class="di">
+        ⬇
+      </span>
+
+      <span>
+        Export Backup
+      </span>
+
+    </button>
+
+
+    <button
+      class="drawer-item"
+      onclick="openImport()">
+
+      <span class="di">
+        ⬆
+      </span>
+
+      <span>
+        Import Backup
+      </span>
+
+    </button>
+
+
+    <button
+      class="drawer-item"
+      onclick="clearAllData()">
+
+      <span class="di">
+        🗑
+      </span>
+
+      <span>
+        Reset All Data
+      </span>
+
+    </button>
+
+  </div>
+
+
+  <!-- DEVELOPER -->
+
+  <div class="developer">
+
+    Developer by
+    <strong>
+      GM Tarek
+    </strong>
+
+  </div>
+
+</aside>
+
+
+<!-- =======================================================
+     FEATURE MODAL
+     ======================================================= -->
+
+<div
+  class="modal-wrap"
+  id="featureModal">
+
+  <div class="modal">
+
+    <div class="modal-head">
+
+      <h2 id="modalTitle">
+        Feature
+      </h2>
+
+      <button
+        class="icon-btn"
+        onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+
+    <div id="modalContent">
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- IMPORT -->
+<input
+  type="file"
+  id="importFile"
+  accept=".json,application/json"
+  style="display:none"
+  onchange="importData(event)"
+>
+
+
+<!-- TOAST -->
+<div
+  id="toastContainer">
+</div>
+
+
+<script>
+"use strict";
+
+/* =========================================================
+   CAMPUSSPHERE DATA ENGINE
+   ========================================================= */
+
+const STORAGE_KEY =
+  "CampusSphere_GM_Tarek_v2";
+
+
+function uid(){
+
+  return Date.now().toString(36)
+    +
+    Math.random()
+      .toString(36)
+      .slice(2,8);
+
+}
+
+
+const defaultState = {
+
+  profile:{
+    name:"GM Tarek",
+    bio:"Student • Learner • Future Innovator",
+    image:""
+  },
+
+  timeline:[],
+
+  routines:[],
+
+  notes:[],
+
+  posts:[
+    {
+      id:uid(),
+
+      author:"CampusSphere",
+
+      text:
+        "আসসালামু আলাইকুম 🌙 " +
+        "আজকের দিনটি জ্ঞান, ইবাদত ও ভালো কাজের মাধ্যমে সুন্দর করে তুলুন।",
+
+      likes:0,
+
+      liked:false,
+
+      comments:[],
+
+      createdAt:Date.now()
+    }
+  ],
+
+  friends:[
+    {
+      id:uid(),
+      name:"Study Buddy",
+      status:"accepted"
+    }
+  ],
+
+  friendRequests:[],
+
+  messages:[
+    {
+      id:uid(),
+
+      from:"Study Buddy",
+
+      messages:[
+        {
+          me:false,
+
+          text:
+            "Assalamu Alaikum! Ready for today's study?",
+
+          time:Date.now()
+        }
+      ]
+    }
+  ],
+
+  finance:[],
+
+  pomodoro:{
+    sessions:0,
+    focusMinutes:0,
+    goal:4
+  },
+
+  settings:{
+    language:"bn"
+  }
+
+};
+
+
+function clone(obj){
+
+  return JSON.parse(
+    JSON.stringify(obj)
+  );
+
+}
+
+
+function deepMerge(base,extra){
+
+  Object.keys(extra || {})
+    .forEach(key=>{
+
+      if(
+        extra[key] &&
+        typeof extra[key]==="object" &&
+        !Array.isArray(extra[key]) &&
+        typeof base[key]==="object" &&
+        base[key]!==null
+      ){
+
+        base[key] =
+          deepMerge(
+            base[key],
+            extra[key]
+          );
+
+      }else{
+
+        base[key] =
+          extra[key];
+
+      }
+
+    });
+
+  return base;
+
+}
+
+
+function loadState(){
+
+  try{
+
+    const raw =
+      localStorage.getItem(
+        STORAGE_KEY
+      );
+
+    if(!raw){
+
+      return clone(defaultState);
+
+    }
+
+    return deepMerge(
+      clone(defaultState),
+      JSON.parse(raw)
+    );
+
+  }catch(error){
+
+    return clone(defaultState);
+
+  }
+
+}
+
+
+let state =
+  loadState();
+
+
+function saveState(){
+
+  try{
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(state)
+    );
+
+  }catch(error){
+
+    toast(
+      "LocalStorage limit reached."
+    );
+
+  }
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   LANGUAGE
+   ========================================================= */
+
+const translations = {
+
+  bn:{
+    brandSub:
+      "আপনার ব্যক্তিগত ক্যাম্পাস ইউনিভার্স",
+
+    dashboard:"ড্যাশবোর্ড",
+
+    home:"হোম",
+
+    study:"স্টাডি",
+
+    finance:"ফাইন্যান্স",
+
+    focusTimer:"ফোকাস টাইমার",
+
+    open:"খুলুন",
+
+    quickAccess:"কুইক অ্যাক্সেস",
+
+    timeline:"টাইমলাইন",
+
+    routine:"রুটিন",
+
+    studyNotes:"স্টাডি নোট",
+
+    todayOverview:"আজকের ওভারভিউ",
+
+    upcomingTasks:"আসন্ন কাজ",
+
+    studyProgress:"স্টাডি প্রগ্রেস"
+
+  },
+
+  en:{
+
+    brandSub:
+      "Your Personal Campus Universe",
+
+    dashboard:"Dashboard",
+
+    home:"Home",
+
+    study:"Study",
+
+    finance:"Finance",
+
+    focusTimer:"Focus Timer",
+
+    open:"Open",
+
+    quickAccess:"Quick Access",
+
+    timeline:"Timeline",
+
+    routine:"Routine",
+
+    studyNotes:"Study Notes",
+
+    todayOverview:"Today's Overview",
+
+    upcomingTasks:"Upcoming Tasks",
+
+    studyProgress:"Study Progress"
+
+  }
+
+};
+
+
+function applyLanguage(){
+
+  const lang =
+    state.settings.language;
+
+  document.documentElement.lang =
+    lang==="bn"
+      ? "bn"
+      : "en";
+
+
+  document
+    .querySelectorAll("[data-i18n]")
+    .forEach(el=>{
+
+      const key =
+        el.dataset.i18n;
+
+      if(
+        translations[lang][key]
+      ){
+
+        el.textContent =
+          translations[lang][key];
+
+      }
+
+    });
+
+
+  document
+    .querySelector(
+      "#languageBtn .lang-text"
+    )
+    .textContent =
+      lang==="bn"
+        ? "English"
+        : "বাংলা";
+
+
+  if(lang==="bn"){
+
+    document
+      .getElementById(
+        "greetingTitle"
+      )
+      .textContent =
+        "আসসালামু আলাইকুম!";
+
+
+    document
+      .getElementById(
+        "greetingText"
+      )
+      .textContent =
+        "আল্লাহ তোমার জ্ঞান, সময় ও পরিশ্রমে বরকত দিন। আজকের ছোট ছোট প্রচেষ্টাগুলোই ইনশাআল্লাহ আগামী দিনের বড় সাফল্য তৈরি করবে।";
+
+  }else{
+
+    document
+      .getElementById(
+        "greetingTitle"
+      )
+      .textContent =
+        "Assalamu Alaikum!";
+
+
+    document
+      .getElementById(
+        "greetingText"
+      )
+      .textContent =
+        "May Allah bless your knowledge, time and efforts. Small consistent efforts today can become great success tomorrow, InshaAllah.";
+
+  }
+
+}
+
+
+function toggleLanguage(){
+
+  state.settings.language =
+    state.settings.language==="bn"
+      ? "en"
+      : "bn";
+
+  saveState();
+
+  toast(
+    state.settings.language==="bn"
+      ? "ভাষা বাংলা করা হয়েছে।"
+      : "Language changed to English."
+  );
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+function switchView(view){
+
+  document
+    .querySelectorAll(".view")
+    .forEach(v=>{
+      v.classList.remove("active");
+    });
+
+
+  const target =
+    document.getElementById(
+      view+"View"
+    );
+
+
+  if(target){
+
+    target.classList.add("active");
+
+  }
+
+
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(btn=>{
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.view===view
+      );
+
+    });
+
+
+  closeDrawer();
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   DRAWER
+   ========================================================= */
+
+function openDrawer(){
+
+  document
+    .getElementById("drawer")
+    .classList.add("show");
+
+
+  document
+    .getElementById("drawerOverlay")
+    .classList.add("show");
+
+}
+
+
+function closeDrawer(){
+
+  document
+    .getElementById("drawer")
+    .classList.remove("show");
+
+
+  document
+    .getElementById("drawerOverlay")
+    .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+function openModal(
+  title,
+  content
+){
+
+  document
+    .getElementById(
+      "modalTitle"
+    )
+    .textContent =
+      title;
+
+
+  document
+    .getElementById(
+      "modalContent"
+    )
+    .innerHTML =
+      content;
+
+
+  document
+    .getElementById(
+      "featureModal"
+    )
+    .classList.add("show");
+
+}
+
+
+function closeModal(){
+
+  document
+    .getElementById(
+      "featureModal"
+    )
+    .classList.remove("show");
+
+}
+
+
+function openFeature(feature){
+
+  closeDrawer();
+
+  const features = {
+
+    profile:renderProfile,
+
+    timeline:renderTimeline,
+
+    routine:renderRoutine,
+
+    social:renderSocial,
+
+    messages:renderMessages,
+
+    friends:renderFriends,
+
+    finance:renderFinanceModal,
+
+    pomodoro:renderPomodoroModal,
+
+    notes:renderNotesModal
+
+  };
+
+
+  if(features[feature]){
+
+    features[feature]();
+
+  }
+
+}
+
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+function renderProfile(){
+
+  const p =
+    state.profile;
+
+
+  const avatar =
+    p.image
+
+    ?
+
+    `<img
+      src="${p.image}"
+      class="profile-avatar"
+      alt="Profile">`
+
+    :
+
+    `
+      <div
+        class="profile-avatar"
+        style="
+          display:grid;
+          place-items:center;
+          font-size:32px;
+        ">
+        👤
+      </div>
+    `;
+
+
+  openModal(
+    "Profile",
+
+    `
+
+      <div class="profile-cover">
+
+        <div class="profile-main">
+
+          ${avatar}
+
+          <div>
+
+            <div
+              style="
+                font-size:22px;
+                font-weight:900;
+              ">
+
+              ${escapeHTML(
+                p.name
+              )}
+
+            </div>
+
+            <div class="muted small">
+
+              ${escapeHTML(
+                p.bio
+              )}
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <form
+        onsubmit="saveProfile(event)"
+        style="margin-top:18px;">
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label>
+              Name
+            </label>
+
+            <input
+              id="profileName"
+              value="${escapeAttr(p.name)}"
+              required>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Bio
+            </label>
+
+            <input
+              id="profileBio"
+              value="${escapeAttr(p.bio)}">
+
+          </div>
+
+
+          <div class="field full">
+
+            <label>
+              Profile Image
+            </label>
+
+            <input
+              id="profileImage"
+              type="file"
+              accept="image/*">
+
+          </div>
+
+        </div>
+
+
+        <p
+          class="muted small"
+          style="margin-top:9px;">
+
+          Profile image is converted to
+          Base64 and stored locally.
+
+        </p>
+
+
+        <div class="form-actions">
+
+          <button
+            class="premium-btn primary">
+
+            💾 Save Profile
+
+          </button>
+
+        </div>
+
+      </form>
+
+    `
+  );
+
+}
+
+
+function saveProfile(event){
+
+  event.preventDefault();
+
+
+  state.profile.name =
+    document
+      .getElementById(
+        "profileName"
+      )
+      .value
+      .trim();
+
+
+  state.profile.bio =
+    document
+      .getElementById(
+        "profileBio"
+      )
+      .value
+      .trim();
+
+
+  const file =
+    document
+      .getElementById(
+        "profileImage"
+      )
+      .files[0];
+
+
+  if(file){
+
+    if(
+      file.size >
+      2.5*1024*1024
+    ){
+
+      toast(
+        "Please choose an image below 2.5MB."
+      );
+
+      return;
+
+    }
+
+
+    const reader =
+      new FileReader();
+
+
+    reader.onload =
+      function(){
+
+        state.profile.image =
+          reader.result;
+
+        saveState();
+
+        toast(
+          "Profile saved successfully."
+        );
+
+        renderProfile();
+
+      };
+
+
+    reader.readAsDataURL(file);
+
+  }else{
+
+    saveState();
+
+    toast(
+      "Profile saved successfully."
+    );
+
+    renderProfile();
+
+  }
+
+}
+
+
+/* =========================================================
+   TIMELINE
+   ========================================================= */
+
+function renderTimeline(){
+
+  let hours="";
+
+
+  const currentHour =
+    new Date().getHours();
+
+
+  for(
+    let h=0;
+    h<24;
+    h++
+  ){
+
+    const item =
+      state.timeline.find(
+        x=>Number(x.hour)===h
+      );
+
+
+    hours += `
+
+      <div
+        class="hour ${
+          h===currentHour
+            ? "active-hour"
+            : ""
+        }">
+
+        <div class="hour-time">
+
+          ${String(h).padStart(2,"0")}:00
+
+        </div>
+
+
+        ${
+          item
+
+          ?
+
+          `
+
+            <div class="hour-task">
+
+              <strong>
+                ${escapeHTML(item.task)}
+              </strong>
+
+              <div
+                class="badge"
+                style="margin-top:6px;">
+
+                ${escapeHTML(
+                  item.category
+                )}
+
+              </div>
+
+
+              <button
+                class="premium-btn danger small"
+                style="margin-top:8px;"
+                onclick="deleteTimeline('${item.id}')">
+
+                ×
+
+              </button>
+
+            </div>
+
+          `
+
+          :
+
+          `
+
+            <div class="hour-empty">
+              Free
+            </div>
+
+          `
+        }
+
+      </div>
+
+    `;
+
+  }
+
+
+  openModal(
+    "24-Hour Timeline",
+
+    `
+
+      <form
+        onsubmit="saveTimeline(event)">
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label>
+              Hour
+            </label>
+
+            <select id="timelineHour">
+
+              ${
+                Array.from(
+                  {length:24},
+                  (_,h)=>
+                    `
+                      <option value="${h}">
+                        ${String(h).padStart(2,"0")}:00
+                      </option>
+                    `
+                ).join("")
+              }
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Category
+            </label>
+
+            <select id="timelineCategory">
+
+              <option>
+                Study
+              </option>
+
+              <option>
+                Class
+              </option>
+
+              <option>
+                Prayer
+              </option>
+
+              <option>
+                Personal
+              </option>
+
+              <option>
+                Work
+              </option>
+
+              <option>
+                Rest
+              </option>
+
+              <option>
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label>
+              Task
+            </label>
+
+            <input
+              id="timelineTask"
+              required
+              placeholder="What will you do at this time?">
+
+          </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+          <button
+            class="premium-btn primary">
+
+            + Add Task
+
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <div style="margin-top:20px;">
+
+        <div class="timeline">
+
+          ${hours}
+
+        </div>
+
+      </div>
+
+    `
+  );
+
+}
+
+
+function saveTimeline(event){
+
+  event.preventDefault();
+
+
+  const hour =
+    Number(
+      document
+        .getElementById(
+          "timelineHour"
+        )
+        .value
+    );
+
+
+  const category =
+    document
+      .getElementById(
+        "timelineCategory"
+      )
+      .value;
+
+
+  const task =
+    document
+      .getElementById(
+        "timelineTask"
+      )
+      .value
+      .trim();
+
+
+  state.timeline =
+    state.timeline.filter(
+      x=>Number(x.hour)!==hour
+    );
+
+
+  state.timeline.push({
+
+    id:uid(),
+
+    hour,
+
+    category,
+
+    task,
+
+    completed:false
+
+  });
+
+
+  saveState();
+
+  toast(
+    "Timeline updated."
+  );
+
+  renderTimeline();
+
+}
+
+
+function deleteTimeline(id){
+
+  state.timeline =
+    state.timeline.filter(
+      x=>x.id!==id
+    );
+
+  saveState();
+
+  renderTimeline();
+
+}
+
+
+/* =========================================================
+   ROUTINE
+   ========================================================= */
+
+const weekdays = [
+
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+
+];
+
+
+function renderRoutine(){
+
+  let list="";
+
+
+  if(
+    !state.routines.length
+  ){
+
+    list = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          📅
+        </div>
+
+        No routine added yet.
+
+      </div>
+
+    `;
+
+  }else{
+
+    list =
+      state.routines
+        .map(r=>`
+
+          <div class="list-item">
+
+            <div class="list-item-main">
+
+              <div class="list-item-title">
+                ${escapeHTML(r.title)}
+              </div>
+
+              <div class="list-item-meta">
+                ${escapeHTML(r.day)}
+                •
+                ${escapeHTML(r.time)}
+              </div>
+
+            </div>
+
+
+            <button
+              class="premium-btn danger small"
+              onclick="deleteRoutine('${r.id}')">
+
+              Delete
+
+            </button>
+
+          </div>
+
+        `)
+        .join("");
+
+  }
+
+
+  openModal(
+
+    "Daily / Weekly Routine",
+
+    `
+
+      <form
+        onsubmit="saveRoutine(event)">
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label>
+              Day
+            </label>
+
+            <select id="routineDay">
+
+              ${
+                weekdays
+                  .map(
+                    x=>`<option>${x}</option>`
+                  )
+                  .join("")
+              }
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Time
+            </label>
+
+            <input
+              id="routineTime"
+              type="time"
+              required>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label>
+              Routine
+            </label>
+
+            <input
+              id="routineTitle"
+              required
+              placeholder="e.g. Electronics study">
+
+          </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+          <button
+            class="premium-btn primary">
+
+            + Add Routine
+
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <div
+        style="margin-top:18px;"
+        class="list">
+
+        ${list}
+
+      </div>
+
+    `
+
+  );
+
+}
+
+
+function saveRoutine(event){
+
+  event.preventDefault();
+
+
+  state.routines.push({
+
+    id:uid(),
+
+    day:
+      document
+        .getElementById(
+          "routineDay"
+        )
+        .value,
+
+    time:
+      document
+        .getElementById(
+          "routineTime"
+        )
+        .value,
+
+    title:
+      document
+        .getElementById(
+          "routineTitle"
+        )
+        .value
+        .trim()
+
+  });
+
+
+  saveState();
+
+  toast(
+    "Routine added."
+  );
+
+  renderRoutine();
+
+}
+
+
+function deleteRoutine(id){
+
+  state.routines =
+    state.routines.filter(
+      x=>x.id!==id
+    );
+
+  saveState();
+
+  renderRoutine();
+
+}
+
+
+/* =========================================================
+   STUDY NOTES
+   ========================================================= */
+
+function saveNote(event){
+
+  event.preventDefault();
+
+
+  state.notes.unshift({
+
+    id:uid(),
+
+    title:
+      document
+        .getElementById(
+          "noteTitle"
+        )
+        .value
+        .trim(),
+
+    subject:
+      document
+        .getElementById(
+          "noteSubject"
+        )
+        .value
+        .trim(),
+
+    content:
+      document
+        .getElementById(
+          "noteContent"
+        )
+        .value
+        .trim(),
+
+    createdAt:Date.now()
+
+  });
+
+
+  document
+    .getElementById(
+      "noteTitle"
+    )
+    .value="";
+
+
+  document
+    .getElementById(
+      "noteSubject"
+    )
+    .value="";
+
+
+  document
+    .getElementById(
+      "noteContent"
+    )
+    .value="";
+
+
+  saveState();
+
+  toast(
+    "Study note saved."
+  );
+
+}
+
+
+function deleteNote(id){
+
+  state.notes =
+    state.notes.filter(
+      x=>x.id!==id
+    );
+
+  saveState();
+
+}
+
+
+function renderNotes(){
+
+  const box =
+    document.getElementById(
+      "studyNotes"
+    );
+
+
+  if(!box) return;
+
+
+  document
+    .getElementById(
+      "noteCounter"
+    )
+    .textContent =
+      state.notes.length;
+
+
+  if(!state.notes.length){
+
+    box.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          📚
+        </div>
+
+        No study notes yet.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    state.notes
+      .map(n=>`
+
+        <div class="study-note">
+
+          <div
+            style="
+              display:flex;
+              justify-content:space-between;
+              gap:10px;
+            ">
+
+            <div>
+
+              <h3>
+                ${escapeHTML(n.title)}
+              </h3>
+
+              <div class="badge">
+
+                ${escapeHTML(
+                  n.subject ||
+                  "General"
+                )}
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="premium-btn danger small"
+              onclick="deleteNote('${n.id}')">
+
+              ×
+
+            </button>
+
+          </div>
+
+
+          <p
+            style="
+              margin-top:9px;
+              line-height:1.6;
+              color:var(--muted);
+              font-size:12px;
+            ">
+
+            ${escapeHTML(n.content)}
+
+          </p>
+
+        </div>
+
+      `)
+      .join("");
+
+}
+
+
+function renderNotesModal(){
+
+  let html="";
+
+
+  if(!state.notes.length){
+
+    html = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          📚
+        </div>
+
+        No notes available.
+
+      </div>
+
+    `;
+
+  }else{
+
+    html = `
+
+      <div class="list">
+
+        ${
+          state.notes
+            .map(n=>`
+
+              <div class="study-note">
+
+                <h3>
+                  ${escapeHTML(n.title)}
+                </h3>
+
+                <div class="badge">
+
+                  ${escapeHTML(
+                    n.subject ||
+                    "General"
+                  )}
+
+                </div>
+
+                <p
+                  style="
+                    margin-top:8px;
+                    color:var(--muted);
+                    font-size:12px;
+                    line-height:1.6;
+                  ">
+
+                  ${escapeHTML(
+                    n.content
+                  )}
+
+                </p>
+
+              </div>
+
+            `)
+            .join("")
+        }
+
+      </div>
+
+    `;
+
+  }
+
+
+  openModal(
+    "Study Notes",
+    html
+  );
+
+}
+
+
+/* =========================================================
+   SOCIAL
+   ========================================================= */
+
+function renderSocial(){
+
+  const posts =
+    [...state.posts]
+      .sort(
+        (a,b)=>
+          b.createdAt-a.createdAt
+      );
+
+
+  let postHTML="";
+
+
+  if(!posts.length){
+
+    postHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          🌐
+        </div>
+
+        No posts yet.
+
+      </div>
+
+    `;
+
+  }else{
+
+    postHTML =
+      posts
+        .map(p=>`
+
+          <article
+            class="post glass">
+
+            <div class="post-head">
+
+              <div class="avatar">
+
+                ${escapeHTML(
+                  (p.author||"U")
+                    .charAt(0)
+                    .toUpperCase()
+                )}
+
+              </div>
+
+
+              <div>
+
+                <div class="post-author">
+
+                  ${escapeHTML(
+                    p.author
+                  )}
+
+                </div>
+
+                <div class="post-time">
+
+                  ${formatDate(
+                    p.createdAt
+                  )}
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="post-content">
+
+              ${escapeHTML(
+                p.text
+              )}
+
+            </div>
+
+
+            <div class="post-actions">
+
+              <button
+                class="post-action"
+                onclick="toggleLike('${p.id}')">
+
+                ${p.liked ? "❤️":"♡"}
+                ${p.likes}
+
+              </button>
+
+
+              <button
+                class="post-action"
+                onclick="focusComment('${p.id}')">
+
+                💬
+                ${p.comments.length}
+
+              </button>
+
+
+              ${
+                p.author===
+                  state.profile.name
+
+                ?
+
+                `
+
+                  <button
+                    class="post-action"
+                    onclick="deletePost('${p.id}')">
+
+                    🗑
+
+                  </button>
+
+                `
+
+                :""
+              }
+
+            </div>
+
+
+            ${
+              p.comments.length
+
+              ?
+
+              `
+
+                <div class="comments">
+
+                  ${
+                    p.comments
+                      .map(c=>`
+
+                        <div class="comment">
+
+                          <strong>
+                            ${escapeHTML(c.name)}:
+                          </strong>
+
+                          ${escapeHTML(c.text)}
+
+                        </div>
+
+                      `)
+                      .join("")
+                  }
+
+                </div>
+
+              `
+
+              :""
+            }
+
+
+            <div
+              style="
+                display:flex;
+                gap:7px;
+                margin-top:10px;
+              ">
+
+              <input
+                id="comment-${p.id}"
+                placeholder="Write a comment..."
+                style="
+                  padding:9px 11px;
+                  font-size:11px;
+                ">
+
+              <button
+                class="premium-btn small"
+                onclick="addComment('${p.id}')">
+
+                Send
+
+              </button>
+
+            </div>
+
+          </article>
+
+        `)
+        .join("");
+
+  }
+
+
+  openModal(
+
+    "News Feed / Social",
+
+    `
+
+      <form
+        onsubmit="createPost(event)">
+
+        <div class="field">
+
+          <label>
+            Create a post
+          </label>
+
+          <textarea
+            id="postText"
+            required
+            placeholder="What's on your mind?">
+          </textarea>
+
+        </div>
+
+
+        <div class="form-actions">
+
+          <button
+            class="premium-btn primary">
+
+            ✨ Publish Post
+
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <div
+        class="list"
+        style="margin-top:18px;">
+
+        ${postHTML}
+
+      </div>
+
+    `
+
+  );
+
+}
+
+
+function createPost(event){
+
+  event.preventDefault();
+
+
+  const text =
+    document
+      .getElementById(
+        "postText"
+      )
+      .value
+      .trim();
+
+
+  if(!text) return;
+
+
+  state.posts.push({
+
+    id:uid(),
+
+    author:
+      state.profile.name ||
+      "GM Tarek",
+
+    text,
+
+    likes:0,
+
+    liked:false,
+
+    comments:[],
+
+    createdAt:Date.now()
+
+  });
+
+
+  saveState();
+
+  toast(
+    "Post published."
+  );
+
+  renderSocial();
+
+}
+
+
+function toggleLike(id){
+
+  const post =
+    state.posts.find(
+      p=>p.id===id
+    );
+
+
+  if(!post) return;
+
+
+  post.liked =
+    !post.liked;
+
+
+  post.likes +=
+    post.liked
+      ? 1
+      : -1;
+
+
+  saveState();
+
+  renderSocial();
+
+}
+
+
+function addComment(id){
+
+  const input =
+    document.getElementById(
+      "comment-"+id
+    );
+
+
+  if(
+    !input ||
+    !input.value.trim()
+  ){
+    return;
+  }
+
+
+  const post =
+    state.posts.find(
+      p=>p.id===id
+    );
+
+
+  if(!post) return;
+
+
+  post.comments.push({
+
+    name:
+      state.profile.name ||
+      "GM Tarek",
+
+    text:
+      input.value.trim()
+
+  });
+
+
+  saveState();
+
+  renderSocial();
+
+}
+
+
+function focusComment(id){
+
+  setTimeout(()=>{
+
+    const input =
+      document.getElementById(
+        "comment-"+id
+      );
+
+    if(input){
+      input.focus();
+    }
+
+  },150);
+
+}
+
+
+function deletePost(id){
+
+  state.posts =
+    state.posts.filter(
+      p=>p.id!==id
+    );
+
+  saveState();
+
+  renderSocial();
+
+}
+
+
+/* =========================================================
+   FRIENDS
+   ========================================================= */
+
+function renderFriends(){
+
+  const requests =
+    state.friendRequests;
+
+
+  const friends =
+    state.friends;
+
+
+  openModal(
+
+    "Friends",
+
+    `
+
+      <form
+        onsubmit="addFriend(event)">
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label>
+              Friend name
+            </label>
+
+            <input
+              id="friendName"
+              required
+              placeholder="Search / add friend">
+
+          </div>
+
+
+          <div
+            class="field"
+            style="align-self:end;">
+
+            <button
+              class="premium-btn primary">
+
+              + Send Request
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </form>
+
+
+      <div class="section-heading">
+
+        <h3>
+          Friend Requests
+        </h3>
+
+      </div>
+
+
+      <div class="list">
+
+        ${
+          requests.length
+
+          ?
+
+          requests
+            .map(r=>`
+
+              <div class="list-item">
+
+                <div class="list-item-main">
+
+                  <div class="list-item-title">
+                    ${escapeHTML(r.name)}
+                  </div>
+
+                  <div class="list-item-meta">
+                    Pending request
+                  </div>
+
+                </div>
+
+
+                <div
+                  style="
+                    display:flex;
+                    gap:5px;
+                  ">
+
+                  <button
+                    class="premium-btn success small"
+                    onclick="acceptFriend('${r.id}')">
+
+                    Accept
+
+                  </button>
+
+
+                  <button
+                    class="premium-btn danger small"
+                    onclick="rejectFriend('${r.id}')">
+
+                    ×
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            `)
+            .join("")
+
+          :
+
+          `<div class="empty">
+             No pending requests.
+           </div>`
+
+        }
+
+      </div>
+
+
+      <div class="section-heading">
+
+        <h3>
+          Your Friends
+        </h3>
+
+      </div>
+
+
+      <div class="list">
+
+        ${
+          friends.length
+
+          ?
+
+          friends
+            .map(f=>`
+
+              <div class="list-item">
+
+                <div class="list-item-main">
+
+                  <div class="list-item-title">
+
+                    👤
+                    ${escapeHTML(f.name)}
+
+                  </div>
+
+                  <div class="list-item-meta">
+
+                    ${escapeHTML(
+                      f.status
+                    )}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            `)
+            .join("")
+
+          :
+
+          `<div class="empty">
+             No friends yet.
+           </div>`
+
+        }
+
+      </div>
+
+    `
+
+  );
+
+}
+
+
+function addFriend(event){
+
+  event.preventDefault();
+
+
+  const name =
+    document
+      .getElementById(
+        "friendName"
+      )
+      .value
+      .trim();
+
+
+  if(!name) return;
+
+
+  state.friendRequests.push({
+
+    id:uid(),
+
+    name
+
+  });
+
+
+  saveState();
+
+  toast(
+    "Friend request sent."
+  );
+
+  renderFriends();
+
+}
+
+
+function acceptFriend(id){
+
+  const req =
+    state.friendRequests.find(
+      x=>x.id===id
+    );
+
+
+  if(!req) return;
+
+
+  state.friends.push({
+
+    id:uid(),
+
+    name:req.name,
+
+    status:"accepted"
+
+  });
+
+
+  state.friendRequests =
+    state.friendRequests.filter(
+      x=>x.id!==id
+    );
+
+
+  saveState();
+
+  renderFriends();
+
+}
+
+
+function rejectFriend(id){
+
+  state.friendRequests =
+    state.friendRequests.filter(
+      x=>x.id!==id
+    );
+
+
+  saveState();
+
+  renderFriends();
+
+}
+
+
+/* =========================================================
+   MESSAGES
+   ========================================================= */
+
+let activeChatId=null;
+
+
+function renderMessages(){
+
+  if(
+    !activeChatId &&
+    state.messages.length
+  ){
+
+    activeChatId =
+      state.messages[0].id;
+
+  }
+
+
+  const active =
+    state.messages.find(
+      x=>x.id===activeChatId
+    );
+
+
+  const users =
+    state.messages
+      .map(chat=>`
+
+        <div
+          class="
+            chat-user
+            ${
+              chat.id===activeChatId
+                ? "active"
+                : ""
+            }
+          "
+          onclick="selectChat('${chat.id}')">
+
+          <div
+            class="avatar"
+            style="
+              width:36px;
+              height:36px;
+            ">
+
+            ${escapeHTML(
+              chat.from
+                .charAt(0)
+                .toUpperCase()
+            )}
+
+          </div>
+
+
+          <div>
+
+            <div
+              style="
+                font-size:12px;
+                font-weight:700;
+              ">
+
+              ${escapeHTML(
+                chat.from
+              )}
+
+            </div>
+
+            <div
+              class="muted"
+              style="font-size:9px;">
+
+              Local chat
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `)
+      .join("");
+
+
+  const bubbles =
+    active
+
+    ?
+
+    active.messages
+      .map(m=>`
+
+        <div
+          class="
+            bubble-row
+            ${m.me ? "me":""}
+          ">
+
+          <div class="bubble">
+
+            ${escapeHTML(
+              m.text
+            )}
+
+          </div>
+
+        </div>
+
+      `)
+      .join("")
+
+    :
+
+    `<div class="empty">
+       Select a conversation.
+     </div>`;
+
+
+  openModal(
+
+    "Messages",
+
+    `
+
+      <div
+        class="
+          chat-layout
+          glass
+        ">
+
+        <div class="chat-users">
+
+          ${users}
+
+        </div>
+
+
+        <div class="chat-main">
+
+          <div class="chat-head">
+
+            <strong>
+
+              ${
+                active
+                  ? escapeHTML(active.from)
+                  : "Messages"
+              }
+
+            </strong>
+
+          </div>
+
+
+          <div
+            class="messages"
+            id="messageArea">
+
+            ${bubbles}
+
+          </div>
+
+
+          ${
+            active
+
+            ?
+
+            `
+
+              <form
+                class="chat-input"
+                onsubmit="sendMessage(event)">
+
+                <input
+                  id="messageInput"
+                  placeholder="Type a message..."
+                  autocomplete="off">
+
+                <button
+                  class="premium-btn primary">
+
+                  ➤
+
+                </button>
+
+              </form>
+
+            `
+
+            :""
+          }
+
+        </div>
+
+      </div>
+
+    `
+
+  );
+
+
+  setTimeout(()=>{
+
+    const area =
+      document.getElementById(
+        "messageArea"
+      );
+
+    if(area){
+
+      area.scrollTop =
+        area.scrollHeight;
+
+    }
+
+  },100);
+
+}
+
+
+function selectChat(id){
+
+  activeChatId=id;
+
+  renderMessages();
+
+}
+
+
+function sendMessage(event){
+
+  event.preventDefault();
+
+
+  const input =
+    document.getElementById(
+      "messageInput"
+    );
+
+
+  const text =
+    input.value.trim();
+
+
+  if(!text) return;
+
+
+  const chat =
+    state.messages.find(
+      x=>x.id===activeChatId
+    );
+
+
+  if(!chat) return;
+
+
+  chat.messages.push({
+
+    me:true,
+
+    text,
+
+    time:Date.now()
+
+  });
+
+
+  saveState();
+
+  renderMessages();
+
+}
+
+
+/* =========================================================
+   FINANCE
+   ========================================================= */
+
+function financeTotals(){
+
+  let income=0;
+
+  let expense=0;
+
+
+  state.finance.forEach(item=>{
+
+    const amount =
+      Number(item.amount)||0;
+
+
+    if(
+      item.type==="income"
+    ){
+
+      income += amount;
+
+    }else{
+
+      expense += amount;
+
+    }
+
+  });
+
+
+  return {
+
+    income,
+
+    expense,
+
+    balance:
+      income-expense
+
+  };
+
+}
+
+
+function money(value){
+
+  return "৳ "+
+    Number(value||0)
+      .toLocaleString(
+        "en-BD",
+        {
+          minimumFractionDigits:2,
+          maximumFractionDigits:2
+        }
+      );
+
+}
+
+
+function renderFinancePage(){
+
+  const totals =
+    financeTotals();
+
+
+  const stats = [
+
+    {
+      icon:"💰",
+      value:money(totals.income),
+      label:"Total Income"
+    },
+
+    {
+      icon:"💸",
+      value:money(totals.expense),
+      label:"Total Expense"
+    },
+
+    {
+      icon:"📊",
+      value:money(totals.balance),
+      label:"Live Balance"
+    },
+
+    {
+      icon:"🧾",
+      value:state.finance.length,
+      label:"Transactions"
+    }
+
+  ];
+
+
+  document
+    .getElementById(
+      "financeStats"
+    )
+    .innerHTML =
+      stats.map(s=>`
+
+        <div class="stat-card glass">
+
+          <div class="stat-icon">
+            ${s.icon}
+          </div>
+
+          <div class="stat-value">
+            ${s.value}
+          </div>
+
+          <div class="stat-label">
+            ${s.label}
+          </div>
+
+        </div>
+
+      `)
+      .join("");
+
+
+  const box =
+    document.getElementById(
+      "financeTransactions"
+    );
+
+
+  const items =
+    [...state.finance]
+      .reverse();
+
+
+  if(!items.length){
+
+    box.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          💰
+        </div>
+
+        No transactions yet.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    items.map(item=>`
+
+      <div class="list-item">
+
+        <div class="list-item-main">
+
+          <div class="list-item-title">
+
+            ${
+              item.type==="income"
+                ? "↑"
+                : "↓"
+            }
+
+            ${escapeHTML(
+              item.category
+            )}
+
+          </div>
+
+
+          <div class="list-item-meta">
+
+            ${
+              escapeHTML(
+                item.description ||
+                "No description"
+              )
+            }
+
+            •
+            ${formatDate(
+              item.createdAt
+            )}
+
+          </div>
+
+        </div>
+
+
+        <div
+          style="
+            display:flex;
+            align-items:center;
+            gap:8px;
+          ">
+
+          <strong
+            class="
+              ${
+                item.type==="income"
+                  ? "income"
+                  : "expense"
+              }
+            ">
+
+            ${
+              item.type==="income"
+                ? "+"
+                : "-"
+            }
+
+            ${money(
+              item.amount
+            )}
+
+          </strong>
+
+
+          <button
+            class="premium-btn danger small"
+            onclick="deleteFinance('${item.id}')">
+
+            ×
+
+          </button>
+
+        </div>
+
+      </div>
+
+    `)
+    .join("");
+
+}
+
+
+function saveFinance(event){
+
+  event.preventDefault();
+
+
+  state.finance.push({
+
+    id:uid(),
+
+    type:
+      document
+        .getElementById(
+          "financeType"
+        )
+        .value,
+
+    amount:
+      Number(
+        document
+          .getElementById(
+            "financeAmount"
+          )
+          .value
+      ),
+
+    category:
+      document
+        .getElementById(
+          "financeCategory"
+        )
+        .value,
+
+    description:
+      document
+        .getElementById(
+          "financeDescription"
+        )
+        .value
+        .trim(),
+
+    createdAt:
+      Date.now()
+
+  });
+
+
+  document
+    .getElementById(
+      "financeAmount"
+    )
+    .value="";
+
+
+  document
+    .getElementById(
+      "financeDescription"
+    )
+    .value="";
+
+
+  saveState();
+
+  toast(
+    "Transaction added."
+  );
+
+}
+
+
+function deleteFinance(id){
+
+  state.finance =
+    state.finance.filter(
+      x=>x.id!==id
+    );
+
+  saveState();
+
+}
+
+
+function renderFinanceModal(){
+
+  const totals =
+    financeTotals();
+
+
+  const items =
+    [...state.finance]
+      .reverse();
+
+
+  openModal(
+
+    "Finance",
+
+    `
+
+      <div
+        class="balance glass">
+
+        <div class="muted small">
+          LIVE BALANCE
+        </div>
+
+        <div
+          class="
+            balance-value
+            ${
+              totals.balance>=0
+                ? "income"
+                : "expense"
+            }
+          ">
+
+          ${money(
+            totals.balance
+          )}
+
+        </div>
+
+
+        <div
+          style="
+            display:flex;
+            justify-content:center;
+            gap:8px;
+            flex-wrap:wrap;
+          ">
+
+          <span class="badge income">
+            Income
+            ${money(
+              totals.income
+            )}
+          </span>
+
+
+          <span class="badge expense">
+            Expense
+            ${money(
+              totals.expense
+            )}
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <form
+        onsubmit="saveFinance(event)"
+        style="margin-top:18px;">
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label>
+              Type
+            </label>
+
+            <select id="financeType">
+
+              <option value="income">
+                Income / আয়
+              </option>
+
+              <option value="expense">
+                Expense / খরচ
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Amount
+            </label>
+
+            <input
+              id="financeAmount"
+              type="number"
+              min="0"
+              step="0.01"
+              required>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label>
+              Category
+            </label>
+
+            <select id="financeCategory">
+
+              <option>
+                Food / খাবার
+              </option>
+
+              <option>
+                Mess
+              </option>
+
+              <option>
+                House Rent
+              </option>
+
+              <option>
+                Education
+              </option>
+
+              <option>
+                Transport
+              </option>
+
+              <option>
+                Mobile / Internet
+              </option>
+
+              <option>
+                Salary / Income
+              </option>
+
+              <option>
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label>
+              Description
+            </label>
+
+            <input
+              id="financeDescription"
+              placeholder="Optional description">
+
+          </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+          <button
+            class="premium-btn primary">
+
+            + Add Transaction
+
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <div
+        style="margin-top:18px;"
+        class="list">
+
+        ${
+          items.length
+
+          ?
+
+          items
+            .map(item=>`
+
+              <div class="list-item">
+
+                <div class="list-item-main">
+
+                  <div class="list-item-title">
+
+                    ${
+                      item.type==="income"
+                        ? "↑"
+                        : "↓"
+                    }
+
+                    ${escapeHTML(
+                      item.category
+                    )}
+
+                  </div>
+
+                  <div class="list-item-meta">
+
+                    ${escapeHTML(
+                      item.description ||
+                      "No description"
+                    )}
+
+                  </div>
+
+                </div>
+
+
+                <strong
+                  class="${
+                    item.type==="income"
+                      ? "income"
+                      : "expense"
+                  }">
+
+                  ${
+                    item.type==="income"
+                      ? "+"
+                      : "-"
+                  }
+
+                  ${money(
+                    item.amount
+                  )}
+
+                </strong>
+
+              </div>
+
+            `)
+            .join("")
+
+          :
+
+          `<div class="empty">
+             No transactions yet.
+           </div>`
+
+        }
+
+      </div>
+
+    `
+
+  );
+
+}
+
+
+/* =========================================================
+   POMODORO
+   ========================================================= */
+
+let pomoSeconds =
+  25*60;
+
+let pomoRunning=false;
+
+let pomoInterval=null;
+
+let pomoStartedAt=null;
+
+
+function formatSeconds(sec){
+
+  return String(
+    Math.floor(sec/60)
+  ).padStart(2,"0")
+  +
+  ":"
+  +
+  String(
+    sec%60
+  ).padStart(2,"0");
+
+}
+
+
+function updatePomoDisplay(){
+
+  const el =
+    document.getElementById(
+      "pomoTime"
+    );
+
+
+  if(el){
+
+    el.textContent =
+      formatSeconds(
+        pomoSeconds
+      );
+
+  }
+
+
+  const total =
+    25*60;
+
+
+  const progress =
+    ((total-pomoSeconds)/total)
+    *360;
+
+
+  const circle =
+    document.getElementById(
+      "pomoCircle"
+    );
+
+
+  if(circle){
+
+    circle.style.background = `
+
+      conic-gradient(
+        #a46cff
+        ${progress}deg,
+
+        rgba(255,94,188,.8)
+        ${progress}deg,
+
+        rgba(255,255,255,.08)
+        ${progress}deg
+      )
+
+    `;
+
+  }
+
+
+  const sessions =
+    document.getElementById(
+      "sessionCount"
+    );
+
+
+  if(sessions){
+
+    sessions.textContent =
+      state.pomodoro.sessions;
+
+  }
+
+
+  const minutes =
+    document.getElementById(
+      "focusMinutes"
+    );
+
+
+  if(minutes){
+
+    minutes.textContent =
+      state.pomodoro.focusMinutes;
+
+  }
+
+}
+
+
+function startPomodoro(){
+
+  if(pomoRunning) return;
+
+
+  pomoRunning=true;
+
+  pomoStartedAt =
+    Date.now();
+
+
+  pomoInterval =
+    setInterval(()=>{
+
+      if(
+        pomoSeconds>0
+      ){
+
+        pomoSeconds--;
+
+        updatePomoDisplay();
+
+      }else{
+
+        completePomodoro();
+
+      }
+
+    },1000);
+
+
+  toast(
+    "Focus session started."
+  );
+
+}
+
+
+function pausePomodoro(){
+
+  if(!pomoRunning) return;
+
+
+  pomoRunning=false;
+
+
+  clearInterval(
+    pomoInterval
+  );
+
+
+  pomoInterval=null;
+
+
+  if(pomoStartedAt){
+
+    const elapsed =
+      Math.floor(
+        (
+          Date.now() -
+          pomoStartedAt
+        )/60000
+      );
+
+
+    if(elapsed>0){
+
+      state.pomodoro.focusMinutes +=
+        elapsed;
+
+      saveState();
+
+    }
+
+  }
+
+
+  pomoStartedAt=null;
+
+
+  toast(
+    "Timer paused."
+  );
+
+}
+
+
+function resetPomodoro(){
+
+  clearInterval(
+    pomoInterval
+  );
+
+
+  pomoInterval=null;
+
+  pomoRunning=false;
+
+  pomoSeconds=
+    25*60;
+
+  pomoStartedAt=null;
+
+
+  updatePomoDisplay();
+
+
+  toast(
+    "Timer reset."
+  );
+
+}
+
+
+function completePomodoro(){
+
+  clearInterval(
+    pomoInterval
+  );
+
+
+  pomoInterval=null;
+
+  pomoRunning=false;
+
+
+  state.pomodoro.sessions++;
+
+  state.pomodoro.focusMinutes+=25;
+
+
+  pomoSeconds=
+    25*60;
+
+
+  saveState();
+
+  updatePomoDisplay();
+
+
+  toast(
+    "🎉 Focus session completed!"
+  );
+
+}
+
+
+function renderPomodoroModal(){
+
+  openModal(
+
+    "Pomodoro Timer",
+
+    `
+
+      <div
+        style="
+          text-align:center;
+          padding:15px;
+        ">
+
+        <div
+          class="pomo-circle"
+          style="margin:auto;">
+
+          <div class="pomo-inner">
+
+            <div
+              class="pomo-time">
+
+              ${formatSeconds(
+                pomoSeconds
+              )}
+
+            </div>
+
+            <div class="pomo-label">
+              FOCUS
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="pomo-controls">
+
+          <button
+            class="premium-btn primary"
+            onclick="startPomodoro()">
+
+            ▶ Start
+
+          </button>
+
+
+          <button
+            class="premium-btn"
+            onclick="pausePomodoro()">
+
+            ⏸ Pause
+
+          </button>
+
+
+          <button
+            class="premium-btn"
+            onclick="resetPomodoro()">
+
+            ↺ Reset
+
+          </button>
+
+        </div>
+
+
+        <div
+          style="
+            margin-top:20px;
+          ">
+
+          <span class="badge">
+
+            Sessions:
+            ${state.pomodoro.sessions}
+
+          </span>
+
+
+          <span class="badge">
+
+            Focus Minutes:
+            ${state.pomodoro.focusMinutes}
+
+          </span>
+
+        </div>
+
+      </div>
+
+    `
+
+  );
+
+}
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+function renderStats(){
+
+  const totals =
+    financeTotals();
+
+
+  const stats=[
+
+    {
+      icon:"🎯",
+      value:
+        state.pomodoro.sessions,
+      label:"Focus Sessions"
+    },
+
+    {
+      icon:"📚",
+      value:
+        state.notes.length,
+      label:"Study Notes"
+    },
+
+    {
+      icon:"📝",
+      value:
+        state.timeline.length,
+      label:"Timeline Tasks"
+    },
+
+    {
+      icon:"৳",
+      value:
+        money(
+          totals.balance
+        ),
+      label:"Live Balance"
+    }
+
+  ];
+
+
+  document
+    .getElementById(
+      "homeStats"
+    )
+    .innerHTML =
+      stats
+        .map(s=>`
+
+          <div
+            class="stat-card glass">
+
+            <div class="stat-icon">
+              ${s.icon}
+            </div>
+
+            <div class="stat-value">
+              ${s.value}
+            </div>
+
+            <div class="stat-label">
+              ${s.label}
+            </div>
+
+          </div>
+
+        `)
+        .join("");
+
+}
+
+
+function renderHomeTasks(){
+
+  const box =
+    document.getElementById(
+      "homeTasks"
+    );
+
+
+  if(!box) return;
+
+
+  const tasks =
+    [...state.timeline]
+      .sort(
+        (a,b)=>
+          a.hour-b.hour
+      )
+      .slice(0,5);
+
+
+  if(!tasks.length){
+
+    box.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          📝
+        </div>
+
+        No tasks added.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    tasks
+      .map(t=>`
+
+        <div class="list-item">
+
+          <div class="list-item-main">
+
+            <div class="list-item-title">
+
+              ${String(
+                t.hour
+              ).padStart(2,"0")}:00
+
+              •
+              ${escapeHTML(
+                t.task
+              )}
+
+            </div>
+
+            <div class="list-item-meta">
+
+              ${escapeHTML(
+                t.category
+              )}
+
+            </div>
+
+          </div>
+
+
+          <span class="badge">
+
+            ${
+              t.hour <
+              new Date().getHours()
+
+              ? "Past"
+              : "Upcoming"
+            }
+
+          </span>
+
+        </div>
+
+      `)
+      .join("");
+
+}
+
+
+function renderHome(){
+
+  renderStats();
+
+  renderHomeTasks();
+
+
+  const session =
+    document.getElementById(
+      "sessionCount"
+    );
+
+
+  if(session){
+
+    session.textContent =
+      state.pomodoro.sessions;
+
+  }
+
+
+  const minutes =
+    document.getElementById(
+      "focusMinutes"
+    );
+
+
+  if(minutes){
+
+    minutes.textContent =
+      state.pomodoro.focusMinutes;
+
+  }
+
+
+  const progress =
+    document.getElementById(
+      "focusProgress"
+    );
+
+
+  if(progress){
+
+    progress.style.width =
+      Math.min(
+        state.pomodoro.sessions /
+        state.pomodoro.goal *
+        100,
+        100
+      )+"%";
+
+  }
+
+
+  const total =
+    state.timeline.length;
+
+
+  const completed =
+    state.timeline.filter(
+      x=>x.completed
+    ).length;
+
+
+  const pct =
+    total
+      ? Math.round(
+          completed/total*100
+        )
+      : 0;
+
+
+  document
+    .getElementById(
+      "studyProgressText"
+    )
+    .textContent =
+      pct+"%";
+
+
+  document
+    .getElementById(
+      "studyProgressBar"
+    )
+    .style.width =
+      pct+"%";
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+function renderDashboard(){
+
+  const totals =
+    financeTotals();
+
+
+  const stats=[
+
+    {
+      icon:"🎯",
+      value:
+        state.pomodoro.sessions,
+      label:"Focus Sessions"
+    },
+
+    {
+      icon:"📚",
+      value:
+        state.notes.length,
+      label:"Study Notes"
+    },
+
+    {
+      icon:"👥",
+      value:
+        state.friends.length,
+      label:"Friends"
+    },
+
+    {
+      icon:"৳",
+      value:
+        money(
+          totals.balance
+        ),
+      label:"Balance"
+    }
+
+  ];
+
+
+  document
+    .getElementById(
+      "dashboardStats"
+    )
+    .innerHTML =
+      stats
+        .map(s=>`
+
+          <div
+            class="stat-card glass">
+
+            <div class="stat-icon">
+              ${s.icon}
+            </div>
+
+            <div class="stat-value">
+              ${s.value}
+            </div>
+
+            <div class="stat-label">
+              ${s.label}
+            </div>
+
+          </div>
+
+        `)
+        .join("");
+
+
+  const total =
+    state.timeline.length;
+
+
+  const completed =
+    state.timeline.filter(
+      x=>x.completed
+    ).length;
+
+
+  const pct =
+    total
+      ? Math.round(
+          completed/total*100
+        )
+      : 0;
+
+
+  document
+    .getElementById(
+      "dashTaskPct"
+    )
+    .textContent =
+      pct+"%";
+
+
+  document
+    .getElementById(
+      "dashTaskProgress"
+    )
+    .style.width =
+      pct+"%";
+
+
+  document
+    .getElementById(
+      "dashNoteCount"
+    )
+    .textContent =
+      state.notes.length;
+
+
+  document
+    .getElementById(
+      "dashNoteProgress"
+    )
+    .style.width =
+      Math.min(
+        state.notes.length*20,
+        100
+      )+"%";
+
+
+  document
+    .getElementById(
+      "dashSessionCount"
+    )
+    .textContent =
+      state.pomodoro.sessions;
+
+
+  document
+    .getElementById(
+      "dashSessionProgress"
+    )
+    .style.width =
+      Math.min(
+        state.pomodoro.sessions/
+        4*100,
+        100
+      )+"%";
+
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+function renderDate(){
+
+  const now =
+    new Date();
+
+
+  const lang =
+    state.settings.language==="bn"
+      ? "bn-BD"
+      : "en-US";
+
+
+  document
+    .getElementById(
+      "todayDate"
+    )
+    .textContent =
+      now.toLocaleDateString(
+        lang,
+        {
+          weekday:"long",
+          year:"numeric",
+          month:"long",
+          day:"numeric"
+        }
+      );
+
+}
+
+
+/* =========================================================
+   ALL RENDER
+   ========================================================= */
+
+function renderAll(){
+
+  applyLanguage();
+
+  renderDate();
+
+  renderHome();
+
+  renderDashboard();
+
+  renderNotes();
+
+  renderFinancePage();
+
+  updatePomoDisplay();
+
+}
+
+
+/* =========================================================
+   BACKUP
+   ========================================================= */
+
+function exportData(){
+
+  const payload={
+
+    app:"CampusSphere",
+
+    developer:"GM Tarek",
+
+    version:2,
+
+    exportedAt:
+      new Date().toISOString(),
+
+    data:state
+
+  };
+
+
+  const blob =
+    new Blob(
+      [
+        JSON.stringify(
+          payload,
+          null,
+          2
+        )
+      ],
+      {
+        type:
+          "application/json"
+      }
+    );
+
+
+  const url =
+    URL.createObjectURL(
+      blob
+    );
+
+
+  const a =
+    document.createElement(
+      "a"
+    );
+
+
+  a.href=url;
+
+  a.download=
+    "CampusSphere-GM-Tarek-Backup.json";
+
+
+  document.body.appendChild(a);
+
+  a.click();
+
+  a.remove();
+
+
+  URL.revokeObjectURL(
+    url
+  );
+
+
+  toast(
+    "Backup exported."
+  );
+
+}
+
+
+function openImport(){
+
+  document
+    .getElementById(
+      "importFile"
+    )
+    .click();
+
+}
+
+
+function importData(event){
+
+  const file =
+    event.target.files[0];
+
+
+  if(!file) return;
+
+
+  const reader =
+    new FileReader();
+
+
+  reader.onload =
+    function(){
+
+      try{
+
+        const payload =
+          JSON.parse(
+            reader.result
+          );
+
+
+        if(!payload.data){
+
+          throw new Error(
+            "Invalid backup"
+          );
+
+        }
+
+
+        state =
+          deepMerge(
+            clone(defaultState),
+            payload.data
+          );
+
+
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(state)
+        );
+
+
+        renderAll();
+
+
+        toast(
+          "Backup imported successfully."
+        );
+
+      }catch(error){
+
+        toast(
+          "Invalid CampusSphere backup."
+        );
+
+      }
+
+    };
+
+
+  reader.readAsText(
+    file
+  );
+
+
+  event.target.value="";
+
+}
+
+
+function clearAllData(){
+
+  const ok =
+    confirm(
+      "Reset ALL CampusSphere data?\n\nThis cannot be undone unless you have a backup."
+    );
+
+
+  if(!ok) return;
+
+
+  localStorage.removeItem(
+    STORAGE_KEY
+  );
+
+
+  state =
+    clone(defaultState);
+
+
+  renderAll();
+
+
+  toast(
+    "All data has been reset."
+  );
+
+}
+
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+
+function escapeHTML(value){
+
+  return String(
+    value ?? ""
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+function escapeAttr(value){
+
+  return escapeHTML(
+    value
+  );
+
+}
+
+
+function formatDate(timestamp){
+
+  return new Date(
+    timestamp
+  ).toLocaleString(
+
+    state.settings.language==="bn"
+      ? "bn-BD"
+      : "en-US",
+
+    {
+      dateStyle:"medium",
+      timeStyle:"short"
+    }
+
+  );
+
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+function toast(message){
+
+  const container =
+    document.getElementById(
+      "toastContainer"
+    );
+
+
+  const item =
+    document.createElement(
+      "div"
+    );
+
+
+  item.style.cssText = `
+
+    position:fixed;
+    z-index:9999;
+
+    top:20px;
+    right:20px;
+
+    width:min(330px,calc(100% - 40px));
+
+    padding:13px 15px;
+
+    border-radius:15px;
+
+    background:
+      rgba(25,18,42,.96);
+
+    border:
+      1px solid
+      rgba(255,255,255,.14);
+
+    box-shadow:
+      0 15px 40px
+      rgba(0,0,0,.35);
+
+    font-size:12px;
+
+    animation:
+      toastIn .3s ease;
+
+  `;
+
+
+  item.textContent =
+    message;
+
+
+  container.appendChild(
+    item
+  );
+
+
+  setTimeout(()=>{
+
+    item.style.opacity="0";
+
+    item.style.transform=
+      "translateX(20px)";
+
+    setTimeout(
+      ()=>item.remove(),
+      250
+    );
+
+  },2800);
+
+}
+
+
+/* =========================================================
+   MODAL / KEYBOARD
+   ========================================================= */
+
+document
+  .getElementById(
+    "featureModal"
+  )
+  .addEventListener(
+    "click",
+    event=>{
+
+      if(
+        event.target.id===
+        "featureModal"
+      ){
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+
+document.addEventListener(
+  "keydown",
+  event=>{
+
+    if(
+      event.key==="Escape"
+    ){
+
+      closeModal();
+
+      closeDrawer();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   DAILY QUOTE
+   ========================================================= */
+
+const quotes=[
+
+  "“Consistency beats intensity when building a better future.”",
+
+  "“Knowledge grows when you consistently give it your time.”",
+
+  "“One focused hour today can change tomorrow.”",
+
+  "“Learn something today that your future self will thank you for.”",
+
+  "“Small progress is still progress.”",
+
+  "“Discipline creates the freedom to achieve your goals.”"
+
+];
+
+
+document
+  .getElementById(
+    "dailyQuote"
+  )
+  .textContent =
+    quotes[
+      new Date().getDate()
+      %
+      quotes.length
+    ];
+
+
+/* =========================================================
+   BOOT
+   ========================================================= */
+
+function boot(){
+
+  renderAll();
+
+}
+
+
+boot();
+
+</script>
+
+</body>
+</html>
